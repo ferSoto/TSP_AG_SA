@@ -226,9 +226,15 @@ FakesAssemblies/
 **/*.Server/GeneratedArtifacts
 **/*.Server/ModelManifest.xml
 _Pvt_Extensions
+*.sln
+*.vcxproj
+*.vcxproj.filters
 
 # Paket dependency manager
 .paket/paket.exe
 
 # FAKE - F# Make
 .fake/
+
+# Exe files
+*.exe
