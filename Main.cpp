@@ -13,14 +13,17 @@
 #include "Headers/Population.h"
 #include "Headers/Graph.h"
 #include "Headers/Genetic_Operators.h"
+#include "Headers/Simulated_Annealing.h"
 
 #define chunk 5			//Number of iterations per thread
-#define pop_size 100	//Number of inhabitants per generation
+#define pop_size 200	//Number of inhabitants per generation
 
 using namespace std;
 
 typedef pair<double, double> coordinate;
 typedef vector<coordinate> coordinates_list;
+typedef vector<int> Path;
+typedef pair<Path, double> Solution;
 
 
 /*****Redirect input from a txt*****/
@@ -121,5 +124,19 @@ int main(int argc, char const *argv[])
 	//current_gen.printPopulation();
 	Inhabitant fittest = current_gen.getFittest();
 	fittest.printInhabitant();
+	
+	/*****************************************Using simulated annealing*****************************************/
+	cout << "\n\n";
+	vector<int> vi;
+	for (int i = 0; i < cities_number; i++)
+		vi.push_back(i);
+	for (int i = 0; i < cities_number; i++) {
+		swap(vi[i], vi[i + (rand() % (cities_number - i))]);
+	}
+	Simulated_Annealing sa(vi);
+	sa.cooling();
+	sa.printHistoricalBestSolution();
+	
+
  	return 0;
 }
