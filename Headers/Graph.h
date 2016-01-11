@@ -5,6 +5,9 @@
 #include <vector>
 #include <cstdlib>
 
+#ifndef GRAPH_H
+#define GRAPH_H
+
 class Graph
 {
 public:
@@ -25,3 +28,5 @@ private:
 	static std::vector<std::vector<double>> distance_matrix;
 	
 };
+
+#endif
