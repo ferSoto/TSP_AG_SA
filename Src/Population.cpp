@@ -17,6 +17,7 @@ typedef std::vector<int> vi;
 Population::Population(int size){
 	inhabitant.resize(size);
 	p_size = size;
+	is_sorted = false;
 }
 
 //Private functions
@@ -97,9 +98,32 @@ Inhabitant Population::tournamentSelection(int k)
 	return this->inhabitant[fittest];
 }
 
+//Return an inhabitant based on its ranking in the population.
+Inhabitant Population::rouletteRankingSelection()
+{
+	int current_inhabitant;
+	long sum, bar;
+	if (!is_sorted) {
+		std::sort(inhabitant.begin(), inhabitant.end());
+		is_sorted = true;
+	}
+	bar = rand() % (long)population_cost;
+	current_inhabitant = 0;
+	sum = 0;
+	while (sum < bar)
+	{
+		current_inhabitant++;
+		sum += (long)inhabitant[p_size - current_inhabitant].getCost();
+	}
+	return inhabitant[p_size -  current_inhabitant];
+}
+
 //Return the fittest inhabitant of the population.
 Inhabitant Population::getFittest()	
 {
-	std::sort(inhabitant.begin(), inhabitant.end());
+	if (!is_sorted) {
+		std::sort(inhabitant.begin(), inhabitant.end());
+		is_sorted = true;
+	}
 	return this->inhabitant[0];
 }
