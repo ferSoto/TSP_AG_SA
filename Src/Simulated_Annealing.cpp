@@ -36,7 +36,7 @@ void Simulated_Annealing::cooling()
 				historical_best_solution = current_best_solution;
 		}
 		//Cooling temperature.
-		T *= 0.9;
+		T *= 0.90;
 	} while (T > 0.1);
 }
 
@@ -59,7 +59,7 @@ void Simulated_Annealing::printHistoricalBestSolution()
 Solution Simulated_Annealing::newSolution(Solution solution)
 {
 	//Getting new solution in the neighborhood.
-	for (int i = 0; i < solution.first.size() / 5; i++) {
+	for (int i = 0; i < solution.first.size() / 4; i++) {
 		std::swap(solution.first[rand() % solution.first.size()], solution.first[rand() % solution.first.size()]);
 		solution.second = city.getPathCost(solution.first);
 	}
