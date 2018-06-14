@@ -1,10 +1,11 @@
-# TSP_AG_SA
-TSP solved using genetic algorithm and simulated annealing.
+# TSP solved by Genetic Algorithm and Simulated Annealing
 
-My very first try solving TSP using evolutionary algorithms (genetic algorithm) and its performance comparative with another metaheuristic (Simulated annealing).
+This is my very first try of solving the **Travel Salesman Problem (TSP)** using a *Genetic algorithm (GA)*. For this case, the GA was compared in performance with another metaheuristic, the *Simulated Annealing (SA)*. 
 
-Genetic algorithm:
-  -Tournament selection (it would be changed for Ranking selection).
-  -PMX Crossover
-  -Mutation for un repeated integers.
-  -Replacement using a new generation, not in the current generation.
+The GA uses the next operators:
+* Tournament selection (it will be changed for Ranking selection).
+* PMX Crossover
+* Mutation for unrepeated integers.
+* Replacement using a new generation, not in the current generation.
+
+The SA is the simple one, with no modifications.
